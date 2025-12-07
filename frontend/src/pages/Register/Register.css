@@ -1,0 +1,158 @@
+/* Register.css - Version Optimisée */
+
+/* Design 2: Formulaire avec Image de Background - OPTIMISÉ */
+.register-container-bg {
+  min-height: 100vh;
+  height: 100vh; /* Fixe la hauteur à 100% de la vue */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Évite le défilement de l'image */
+  padding: 20px;
+  box-sizing: border-box;
+  overflow: hidden; /* Supprime tout scroll */
+}
+
+.register-overlay {
+  position: fixed; /* Change de absolute à fixed pour couvrir toute la vue */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.register-card-bg {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  padding: 35px; /* Légèrement réduit pour économiser l'espace */
+  width: 100%;
+  max-width: 420px; /* Légèrement réduit */
+  max-height: 90vh; /* Limite la hauteur maximale */
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease;
+  overflow-y: auto; /* Scroll seulement si nécessaire à l'intérieur de la carte */
+}
+
+.register-card-bg:hover {
+  transform: translateY(-5px);
+}
+
+.register-header-bg {
+  text-align: center;
+  margin-bottom: 25px; /* Réduit l'espacement */
+}
+
+.register-header-bg h2 {
+  color: #333;
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 1.5rem; /* Taille de police légèrement réduite */
+}
+
+.register-header-bg p {
+  color: #666;
+  font-size: 13px; /* Texte plus compact */
+  margin: 0;
+}
+
+.form-group-bg {
+  margin-bottom: 16px; /* Espacement réduit entre les champs */
+}
+
+.form-group-bg input,
+.form-group-bg select {
+  width: 100%;
+  padding: 10px 12px; /* Padding réduit */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px; /* Taille de police réduite */
+  transition: all 0.3s;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.form-group-bg input:focus,
+.form-group-bg select:focus {
+  border-color: #4CAF50;
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+  outline: none;
+  background: white;
+}
+
+.register-btn-bg {
+  width: 100%;
+  padding: 12px; /* Padding réduit */
+  background: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 8px; /* Marge réduite */
+}
+
+.register-btn-bg:hover {
+  background: #45a049;
+  transform: translateY(-2px);
+  box-shadow: 0 7px 14px rgba(0, 0, 0, 0.1);
+}
+
+.register-footer-bg {
+  text-align: center;
+  margin-top: 20px; /* Marge réduite */
+  font-size: 13px; /* Texte plus compact */
+  color: #666;
+}
+
+.register-footer-bg a {
+  color: #4CAF50;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.register-footer-bg a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive pour très petits écrans */
+@media (max-width: 576px) {
+  .register-card-bg {
+    padding: 25px;
+    max-height: 85vh; /* Encore plus compact sur mobile */
+  }
+  
+  .register-container-bg {
+    padding: 15px;
+  }
+  
+  .form-group-bg {
+    margin-bottom: 14px;
+  }
+}
+
+/* Pour les écrans très petits en hauteur */
+@media (max-height: 700px) {
+  .register-card-bg {
+    padding: 20px;
+    max-height: 95vh;
+  }
+  
+  .register-header-bg {
+    margin-bottom: 20px;
+  }
+  
+  .form-group-bg {
+    margin-bottom: 12px;
+  }
+}
