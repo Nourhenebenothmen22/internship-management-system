@@ -1,158 +1,586 @@
-/* Register.css - Version Optimisée */
-
-/* Design 2: Formulaire avec Image de Background - OPTIMISÉ */
-.register-container-bg {
-  min-height: 100vh;
-  height: 100vh; /* Fixe la hauteur à 100% de la vue */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed; /* Évite le défilement de l'image */
-  padding: 20px;
-  box-sizing: border-box;
-  overflow: hidden; /* Supprime tout scroll */
+/* src/components/Register/Register.css - DESIGN MINIMAL SANS SCROLL */
+:root {
+  --primary-color: #4361ee;
+  --primary-dark: #3a56d4;
+  --secondary-color: #7209b7;
+  --accent-color: #06d6a0;
+  --text-dark: #2d3748;
+  --text-light: #718096;
+  --white: #ffffff;
+  --bg-light: #f8fafc;
+  --gray-light: #e2e8f0;
+  --error-color: #ef4444;
+  --success-color: #10b981;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 12px 40px rgba(67, 97, 238, 0.12);
+  --transition: all 0.25s ease;
 }
 
-.register-overlay {
-  position: fixed; /* Change de absolute à fixed pour couvrir toute la vue */
+/* Reset global */
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 100%;
+}
+
+.register {
+  height: 100vh;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8fafc 0%, #e9f2ff 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-}
-
-.register-card-bg {
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 15px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-  padding: 35px; /* Légèrement réduit pour économiser l'espace */
-  width: 100%;
-  max-width: 420px; /* Légèrement réduit */
-  max-height: 90vh; /* Limite la hauteur maximale */
-  backdrop-filter: blur(10px);
-  transition: transform 0.3s ease;
-  overflow-y: auto; /* Scroll seulement si nécessaire à l'intérieur de la carte */
-}
-
-.register-card-bg:hover {
-  transform: translateY(-5px);
-}
-
-.register-header-bg {
-  text-align: center;
-  margin-bottom: 25px; /* Réduit l'espacement */
-}
-
-.register-header-bg h2 {
-  color: #333;
-  margin-bottom: 8px;
-  font-weight: 600;
-  font-size: 1.5rem; /* Taille de police légèrement réduite */
-}
-
-.register-header-bg p {
-  color: #666;
-  font-size: 13px; /* Texte plus compact */
-  margin: 0;
-}
-
-.form-group-bg {
-  margin-bottom: 16px; /* Espacement réduit entre les champs */
-}
-
-.form-group-bg input,
-.form-group-bg select {
-  width: 100%;
-  padding: 10px 12px; /* Padding réduit */
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 14px; /* Taille de police réduite */
-  transition: all 0.3s;
+  overflow: hidden;
+  padding: 0.5rem;
   box-sizing: border-box;
-  background: rgba(255, 255, 255, 0.8);
 }
 
-.form-group-bg input:focus,
-.form-group-bg select:focus {
-  border-color: #4CAF50;
-  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
-  outline: none;
-  background: white;
+/* Background minimal */
+.register__bg-shape {
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(67, 97, 238, 0.06), rgba(114, 9, 183, 0.03));
+  animation: float 20s infinite ease-in-out;
+  z-index: 0;
 }
 
-.register-btn-bg {
+.register__bg-shape--1 {
+  width: 120px;
+  height: 120px;
+  top: -60px;
+  right: -40px;
+}
+
+.register__bg-shape--2 {
+  width: 80px;
+  height: 80px;
+  bottom: -40px;
+  left: -40px;
+  animation-delay: 5s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+/* Container principal */
+.register__container {
   width: 100%;
-  padding: 12px; /* Padding réduit */
-  background: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s;
-  margin-top: 8px; /* Marge réduite */
+  max-width: 500px;
+  height: auto;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.register-btn-bg:hover {
-  background: #45a049;
-  transform: translateY(-2px);
-  box-shadow: 0 7px 14px rgba(0, 0, 0, 0.1);
+/* Carte principale */
+.register__card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
-.register-footer-bg {
+.register__card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+}
+
+/* Header */
+.register__header {
   text-align: center;
-  margin-top: 20px; /* Marge réduite */
-  font-size: 13px; /* Texte plus compact */
-  color: #666;
+  margin-bottom: 1.25rem;
 }
 
-.register-footer-bg a {
-  color: #4CAF50;
+.register__title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin-bottom: 0.25rem;
+  line-height: 1.2;
+}
+
+.register__title-highlight {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.register__subtitle {
+  color: var(--text-light);
+  font-size: 0.8rem;
+  line-height: 1.3;
+}
+
+/* Quick Register */
+.register__quick {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.register__quick-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.7rem;
+  border: 1.5px solid var(--gray-light);
+  border-radius: 10px;
+  background: var(--white);
+  color: var(--text-dark);
+  font-weight: 600;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: var(--transition);
+  min-height: 40px;
+}
+
+.register__quick-btn:hover {
+  transform: translateY(-1px);
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  box-shadow: var(--shadow);
+}
+
+.register__quick-icon {
+  font-size: 0.9rem;
+}
+
+
+/* Form */
+.register__form {
+  margin-bottom: 0.75rem;
+}
+
+.register__input-group {
+  position: relative;
+  margin-bottom: 0.75rem;
+  width: 100%;
+}
+
+.register__input-icon {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--primary-color);
+  font-size: 0.75rem;
+  z-index: 2;
+}
+
+.register__input {
+  width: 100%;
+  padding: 0.7rem 0.7rem 0.7rem 2.25rem;
+  border: 1.5px solid var(--gray-light);
+  border-radius: 10px;
+  font-size: 0.75rem;
+  color: var(--text-dark);
+  background: var(--white);
+  transition: var(--transition);
+  box-sizing: border-box;
+  height: 40px;
+}
+
+.register__input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+}
+
+.register__input::placeholder {
+  color: var(--text-light);
+  font-size: 0.75rem;
+}
+
+.register__input--error {
+  border-color: var(--error-color);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.register__password-toggle {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--text-light);
+  cursor: pointer;
+  padding: 0.15rem;
+  font-size: 0.75rem;
+  transition: var(--transition);
+  z-index: 2;
+}
+
+.register__password-toggle:hover {
+  color: var(--primary-color);
+}
+
+.register__error {
+  color: var(--error-color);
+  font-size: 0.65rem;
+  margin-top: 0.15rem;
+  display: block;
+  padding-left: 0.25rem;
+}
+
+/* Role Selection - Checkboxes compactes */
+.register__role-section {
+  margin: 0.75rem 0;
+}
+
+.register__role-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 0.5rem;
+}
+
+.register__role-checkboxes {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.register__role-checkbox {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 0.75rem;
+  border: 1.5px solid var(--gray-light);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: var(--transition);
+  background: var(--white);
+  position: relative;
+  min-height: 40px;
+  box-sizing: border-box;
+}
+
+.register__role-checkbox:hover {
+  border-color: var(--primary-color);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow);
+}
+
+.register__role-checkbox--active {
+  border-color: var(--primary-color);
+  background: linear-gradient(135deg, rgba(67, 97, 238, 0.04), rgba(114, 9, 183, 0.01));
+}
+
+.register__role-checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.register__role-checkbox-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--gray-light);
+  color: var(--text-light);
+  border-radius: 6px;
+  font-size: 0.75rem;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+
+.register__role-checkbox--active .register__role-checkbox-icon {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: var(--white);
+}
+
+.register__role-checkbox-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.register__role-checkbox-title {
+  font-weight: 600;
+  color: var(--text-dark);
+  font-size: 0.7rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.2;
+}
+
+.register__role-checkbox-desc {
+  display: none;
+}
+
+/* Terms */
+.register__terms {
+  margin: 0.75rem 0;
+}
+
+.register__terms-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  cursor: pointer;
+  position: relative;
+}
+
+.register__terms-checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.register__terms-checkmark {
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid var(--gray-light);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.register__terms-checkbox input:checked ~ .register__terms-checkmark {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  border-color: var(--primary-color);
+}
+
+.register__terms-checkbox input:checked ~ .register__terms-checkmark::after {
+  content: '✓';
+  color: var(--white);
+  font-size: 0.6rem;
+  font-weight: 600;
+}
+
+.register__terms-text {
+  font-size: 0.7rem;
+  color: var(--text-dark);
+  line-height: 1.3;
+}
+
+.register__terms-link {
+  color: var(--primary-color);
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
 }
 
-.register-footer-bg a:hover {
+.register__terms-link:hover {
   text-decoration: underline;
 }
 
-/* Responsive pour très petits écrans */
-@media (max-width: 576px) {
-  .register-card-bg {
-    padding: 25px;
-    max-height: 85vh; /* Encore plus compact sur mobile */
+/* Submit Button */
+.register__submit {
+  width: 100%;
+  padding: 0.8rem;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: var(--white);
+  border: none;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: var(--transition);
+  margin-top: 0.5rem;
+  min-height: 42px;
+}
+
+.register__submit:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lg);
+}
+
+.register__submit--loading {
+  opacity: 0.8;
+  cursor: not-allowed;
+}
+
+.register__submit-icon {
+  font-size: 0.7rem;
+  transition: transform 0.3s ease;
+}
+
+.register__submit:hover .register__submit-icon {
+  transform: translateX(3px);
+}
+
+.register__spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--white);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Login Link */
+.register__login {
+  text-align: center;
+  padding-top: 1rem;
+  border-top: 1px solid var(--gray-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-top: 1rem;
+}
+
+.register__login-text {
+  color: var(--text-light);
+  font-size: 0.7rem;
+}
+
+.register__login-link {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.7rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  transition: var(--transition);
+}
+
+.register__login-link:hover {
+  color: var(--primary-dark);
+  text-decoration: underline;
+}
+
+.register__login-icon {
+  font-size: 0.6rem;
+  transition: transform 0.3s ease;
+}
+
+.register__login-link:hover .register__login-icon {
+  transform: translateX(3px);
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .register {
+    padding: 0.25rem;
   }
   
-  .register-container-bg {
-    padding: 15px;
+  .register__container {
+    max-width: 100%;
   }
   
-  .form-group-bg {
-    margin-bottom: 14px;
+  .register__card {
+    padding: 1.25rem;
+    border-radius: 12px;
+  }
+  
+  .register__title {
+    font-size: 1.3rem;
+  }
+  
+  .register__subtitle {
+    font-size: 0.75rem;
+  }
+  
+  .register__quick {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .register__quick-btn {
+    min-height: 38px;
+  }
+  
+  .register__input {
+    height: 38px;
+    font-size: 0.75rem;
+    padding: 0.6rem 0.6rem 0.6rem 2rem;
+  }
+  
+  .register__input-icon {
+    left: 0.6rem;
+    font-size: 0.7rem;
+  }
+  
+  .register__role-checkboxes {
+    flex-direction: column;
+  }
+  
+  .register__role-checkbox {
+    min-height: 38px;
+  }
+  
+  .register__role-checkbox-icon {
+    width: 22px;
+    height: 22px;
+  }
+  
+  .register__submit {
+    padding: 0.75rem;
+    font-size: 0.75rem;
+    min-height: 40px;
   }
 }
 
-/* Pour les écrans très petits en hauteur */
-@media (max-height: 700px) {
-  .register-card-bg {
-    padding: 20px;
-    max-height: 95vh;
+@media (max-width: 320px) {
+  .register__card {
+    padding: 1rem;
   }
   
-  .register-header-bg {
-    margin-bottom: 20px;
+  .register__title {
+    font-size: 1.2rem;
   }
   
-  .form-group-bg {
-    margin-bottom: 12px;
+  .register__quick-btn,
+  .register__input,
+  .register__role-checkbox,
+  .register__submit {
+    min-height: 36px;
   }
+}
+
+/* Empêcher tout scroll */
+body, html, .register, .register__container, .register__card {
+  overflow: hidden;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+body::-webkit-scrollbar,
+html::-webkit-scrollbar,
+.register::-webkit-scrollbar,
+.register__container::-webkit-scrollbar,
+.register__card::-webkit-scrollbar {
+  display: none;
 }
