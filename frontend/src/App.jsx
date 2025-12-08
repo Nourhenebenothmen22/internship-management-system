@@ -3,11 +3,11 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ProtectedRoute from './components/ProtectedRoute';
 import Login from './pages/Login/Login';
-import Register from './pages/Register/Register';
 import StudentDashboard from './pages/Student/StudentDashboard/StudentDashboard';
 import Home from './pages/Home/Home';
 import Layout from './pages/layouts/Layout';
 import Unauthorized from './pages/Unauthorized';
+import Register from './pages/Register/Register';
 
 
 function App() {
