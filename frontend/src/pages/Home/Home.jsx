@@ -1,8 +1,15 @@
 import React from 'react'
+import Hero from '../../components/Hero/Hero'
+import Internships from '../../components/Internships/Internships'
 
 function Home() {
   return (
-    <div>Home</div>
+    <div>
+      <Hero/>
+      <Internships/>
+      
+
+    </div>
   )
 }
 
