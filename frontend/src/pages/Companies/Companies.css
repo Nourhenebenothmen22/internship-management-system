@@ -61,6 +61,7 @@
     flex-direction: column;
     align-items: center;
     gap: 1rem;
+    animation: slideUp 0.8s ease-out;
 }
 
 .companies__title {
@@ -124,6 +125,8 @@
     gap: 2rem;
     width: 100%;
     padding-bottom: 4rem;
+    /* Stagger effect handled via nth-child in utility or js, or simply animate the grid */
+    animation: slideUp 1s ease-out 0.2s backwards;
 }
 
 /* Company Card */
