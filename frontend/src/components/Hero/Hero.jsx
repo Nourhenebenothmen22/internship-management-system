@@ -6,7 +6,6 @@ import "./Hero.css";
 function Hero() {
   const handleSearch = (e) => {
     e.preventDefault();
-    // Logic de recherche à implémenter
     console.log("Search submitted");
   };
 
