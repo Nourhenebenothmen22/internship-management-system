@@ -27,8 +27,8 @@ function Navbar() {
         </div>
 
         {/* Mobile Menu Button */}
-        <button 
-          className="nav__toggle" 
+        <button
+          className="nav__toggle"
           onClick={toggleMenu}
           aria-label="Toggle navigation"
         >
@@ -37,45 +37,38 @@ function Navbar() {
 
         {/* Navigation Links */}
         <nav className={`nav__links ${isMenuOpen ? "nav__links--open" : ""}`}>
-          <NavLink 
-            to="/" 
-            end 
+          <NavLink
+            to="/"
+            end
             className={({ isActive }) => `nav__link ${isActive ? "nav__link--active" : ""}`}
             onClick={closeMenu}
           >
             <FaHome className="nav__link-icon" />
             <span>Home</span>
           </NavLink>
-          
-          <NavLink 
-            to="/internships" 
-            className={({ isActive }) => `nav__link ${isActive ? "nav__link--active" : ""}`}
-            onClick={closeMenu}
-          >
-            <FaBriefcase className="nav__link-icon" />
-            <span>Internships</span>
-          </NavLink>
-          
-          <NavLink 
-            to="/companies" 
+
+
+
+          <NavLink
+            to="/companies"
             className={({ isActive }) => `nav__link ${isActive ? "nav__link--active" : ""}`}
             onClick={closeMenu}
           >
             <FaBuilding className="nav__link-icon" />
             <span>Companies</span>
           </NavLink>
-          
-          <NavLink 
-            to="/about" 
+
+          <NavLink
+            to="/about"
             className={({ isActive }) => `nav__link ${isActive ? "nav__link--active" : ""}`}
             onClick={closeMenu}
           >
             <FaInfoCircle className="nav__link-icon" />
             <span>About</span>
           </NavLink>
-          
-          <NavLink 
-            to="/contact" 
+
+          <NavLink
+            to="/contact"
             className={({ isActive }) => `nav__link ${isActive ? "nav__link--active" : ""}`}
             onClick={closeMenu}
           >
@@ -86,17 +79,17 @@ function Navbar() {
 
         {/* Authentication Buttons */}
         <div className="nav__auth">
-          <Link 
-            to="/login" 
+          <Link
+            to="/login"
             className="btn btn--ghost"
             onClick={closeMenu}
           >
             <FaUser className="btn-icon" />
             <span>Login</span>
           </Link>
-          
-          <Link 
-            to="/register" 
+
+          <Link
+            to="/register"
             className="btn btn--primary btn--glow"
             onClick={closeMenu}
           >
