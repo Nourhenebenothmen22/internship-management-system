@@ -63,7 +63,7 @@ Follow these steps to get a local copy running.
 
 1.  **Clone the repo**
     ```sh
-    git clone https://github.com/your_username/internship-management-system.git
+     git clone https://github.com/Nourhenebenothmen22/internship-management-system.git
     cd internship-management-system
     ```
 
