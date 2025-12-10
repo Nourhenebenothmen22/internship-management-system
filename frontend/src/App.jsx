@@ -13,6 +13,9 @@ import Contact from './pages/Contact/Contact';
 import About from './pages/About/About';
 
 
+
+
+
 function App() {
   return (
     <Router>
@@ -24,6 +27,7 @@ function App() {
           <Route path="/companies" element={<Companies />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
+
           <Route
             path="/student_dashboard"
             element={
