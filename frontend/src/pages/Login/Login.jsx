@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { FaEnvelope, FaLock, FaSignInAlt, FaUserPlus, FaGoogle, FaGithub, FaEye, FaEyeSlash, FaArrowRight, FaRocket, FaCheckCircle } from 'react-icons/fa';
+import { FaEnvelope, FaLock, FaSignInAlt, FaUserPlus, FaGoogle, FaGithub, FaEye, FaEyeSlash } from 'react-icons/fa';
 import './Login.css';
 
 const Login = () => {
@@ -23,17 +23,10 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setIsLoading(true);
-    
-    setTimeout(() => {
-      console.log('Login attempt:', formData);
-      setIsLoading(false);
-      navigate('/dashboard');
-    }, 1500);
   };
 
-  const handleSocialLogin = (provider) => {
-    console.log(`Login with ${provider}`);
+  const handleSocialLogin = () => {
+
   };
 
   return (
@@ -41,74 +34,54 @@ const Login = () => {
       {/* Background Elements */}
       <div className="login__bg-shape login__bg-shape--1"></div>
       <div className="login__bg-shape login__bg-shape--2"></div>
-      
+
       <div className="login__container">
         {/* Right Panel - Login Form */}
         <div className="login__right">
-          <div className="login__card-wrapper">
-            <div className="login__card">
-              <div className="login__header">
-                <h1 className="login__title">
-                  Welcome <span className="login__title-highlight">Back</span>
-                </h1>
-                <p className="login__subtitle">
-                  Sign in to access your internship dashboard
-                </p>
-              </div>
+          <div className="login__card">
+            <div className="login__header">
+              <h1 className="login__title">Welcome Back!</h1>
+              <p className="login__subtitle">
+                Sign in to continue your internship journey
+              </p>
+            </div>
 
-              {/* Quick Login Buttons */}
-              <div className="login__quick">
-                <button 
-                  className="login__quick-btn login__quick-btn--google"
-                  onClick={() => handleSocialLogin('google')}
-                  type="button"
-                >
-                  <FaGoogle className="login__quick-icon" />
-                  <span>Google</span>
-                </button>
-                
-                <button 
-                  className="login__quick-btn login__quick-btn--github"
-                  onClick={() => handleSocialLogin('github')}
-                  type="button"
-                >
-                  <FaGithub className="login__quick-icon" />
-                  <span>GitHub</span>
-                </button>
-              </div>
-
-              {/* Divider */}
-              <div className="login__divider">
-                <span>or continue with</span>
-              </div>
-
-              {/* Login Form */}
-              <form className="login__form" onSubmit={handleSubmit}>
-                <div className="login__input-group">
-                  <FaEnvelope className="login__input-icon" />
+            {/* Login Form */}
+            <form className="login__form" onSubmit={handleSubmit}>
+              <div className="login__form-group">
+                <label className="login__label">
+                  <FaEnvelope className="login__label-icon" />
+                  <span>Email Address</span>
+                </label>
+                <div className="login__input-wrapper">
                   <input
                     type="email"
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    placeholder="Email"
+                    placeholder="Enter your email"
                     className="login__input"
                     required
                   />
                 </div>
+              </div>
 
-                <div className="login__input-group">
-                  <FaLock className="login__input-icon" />
+              <div className="login__form-group">
+                <label className="login__label">
+                  <FaLock className="login__label-icon" />
+                  <span>Password</span>
+                </label>
+                <div className="login__input-wrapper">
                   <input
                     type={showPassword ? "text" : "password"}
                     name="password"
                     value={formData.password}
                     onChange={handleChange}
-                    placeholder="Password"
+                    placeholder="Enter your password"
                     className="login__input"
                     required
                   />
-                  <button 
+                  <button
                     type="button"
                     className="login__password-toggle"
                     onClick={() => setShowPassword(!showPassword)}
@@ -116,49 +89,52 @@ const Login = () => {
                     {showPassword ? <FaEyeSlash /> : <FaEye />}
                   </button>
                 </div>
+              </div>
 
-                {/* Options */}
-                <div className="login__options">
-                  <label className="login__checkbox">
-                    <input
-                      type="checkbox"
-                      checked={rememberMe}
-                      onChange={() => setRememberMe(!rememberMe)}
-                    />
-                    <span className="login__checkmark"></span>
-                    <span className="login__checkbox-text">Remember me</span>
-                  </label>
-                  
-                  <Link to="/forgot-password" className="login__forgot">
-                    Forgot password?
-                  </Link>
-                </div>
+              {/* Remember Me & Forgot Password */}
+              <div className="login__options">
+                <label className="login__checkbox">
+                  <input
+                    type="checkbox"
+                    checked={rememberMe}
+                    onChange={() => setRememberMe(!rememberMe)}
+                  />
+                  <span className="login__checkbox-custom"></span>
+                  <span className="login__checkbox-text">Remember me</span>
+                </label>
 
-                {/* Submit Button */}
-                <button 
-                  type="submit" 
-                  className={`login__submit ${isLoading ? 'login__submit--loading' : ''}`}
-                  disabled={isLoading}
-                >
-                  {isLoading ? (
-                    <span className="login__spinner"></span>
-                  ) : (
-                    <>
-                      <span>Sign In</span>
-                      <FaArrowRight className="login__submit-icon" />
-                    </>
-                  )}
-                </button>
-              </form>
-
-              {/* Sign Up Link */}
-              <div className="login__signup">
-                <span className="login__signup-text">Don't have an account?</span>
-                <Link to="/register" className="login__signup-link">
-                  Create Account
-                  <FaArrowRight className="login__signup-icon" />
+                <Link to="/forgot-password" className="login__forgot">
+                  Forgot password?
                 </Link>
               </div>
+
+              {/* Submit Button */}
+              <button
+                type="submit"
+                className={`login__submit ${isLoading ? 'login__submit--loading' : ''}`}
+                disabled={isLoading}
+              >
+                {isLoading ? (
+                  <span className="login__spinner"></span>
+                ) : (
+                  <>
+                    <FaSignInAlt className="login__submit-icon" />
+                    <span>Sign In</span>
+                  </>
+                )}
+              </button>
+
+            </form>
+
+            {/* Sign Up Link */}
+            <div className="login__footer">
+              <p className="login__footer-text">
+                Don't have an account?
+              </p>
+              <Link to="/register" className="login__register-link">
+                <FaUserPlus className="login__register-icon" />
+                <span>Create an account</span>
+              </Link>
             </div>
           </div>
         </div>
